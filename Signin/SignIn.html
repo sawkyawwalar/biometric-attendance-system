@@ -1,0 +1,40 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign In</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	function accessform(){
+	if(document.forms[0].username.value!="minkhantkyawlwin8@gmail.com"){
+		alert("Username is invalid");
+		return false;
+	}
+	if(document.forms[0].pswd.value!="minkhant"){
+		alert("Your password is wrong!");
+		return false;
+	}
+	alert("Welcome!");
+	return true;
+	}
+	</script>
+</head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+<header><br>University of Technology(Yatanarpon Cyber City)</header>
+<div id="container">
+
+<div class="Sign-in">
+	<form action="index.html" onsubmit="return accessform();">
+	<h1>Sign In</h1>
+	<label for="username">Username<br><br></label>
+	<input type="text" name="username" id="username" placeholder="example@gmail.com" required class="input"><br><br>
+	<label for="pswd">Password<br><br></label>
+	<input type="password" name="pswd" id="pswd" required class="input"><br><br>
+	<input type="submit" value="Sign In"  id="submit">
+	<br>
+	<a href="SignUp.html"><br>Create a new account</a>
+	</form>
+</div>
+</div>
+</body>
+</html>
