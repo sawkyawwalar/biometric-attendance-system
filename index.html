@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>Biometric Attendance</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<script src="https://unpkg.com/vue"></script>
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<style>
+nav {text-decoration:none;
+  font-family: san-serif;
+display:block;
+background-color:#6c7ae0;
+border-box:solid 15px 0 0 15px;
+font-size:1.1em;
+padding:13px;
+}
+nav a{text-decoration:none;
+padding:14px;}
+nav a:link{color:white;}
+nav a:visited{color:white;}
+nav a:hover{color:white;
+background-color:#ececff;}
+body{background-color:#c4d3f6;}
+.header{font-size:2em;
+font-family:san-serif;
+text-align:center;}
+h2{font-family:san-serif;
+font-size:1.5em;
+Text-align:center;}
+</style>
+<body >
+<header>
+<div class="header">
+	<div class="logo">
+		<a>Biometric Attendance</a>
+	</div>
+</header><br>
+<nav>
+	<a href="index.html" class="set">Users</a>
+    <a href="userlog.html" class="set">Users Log</a>
+    <a href="manageuser.html"class="set">Manage Users</a>
+
+</nav><br>
+	<div><p><h2>Here Are The All Results</h2></p></div>
+	<div class="limiter" id="app">
+		<div class="container-table100">
+			<div class="wrap-table100">
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+							Name
+							</div>
+							<div class="cell">
+								Social Security Number
+							</div>
+							<div class="cell">
+								Gender
+							</div>
+							<div class="cell">
+								Email
+							</div>
+							<div class="cell">
+								Fingerprint ID
+							</div>
+						</div>
+
+						<div class="row" v-for="list in userList">
+							
+							<div class="cell" >
+							{{list.name}}
+							</div>
+							<div class="cell" >
+								{{list.Ssn}}
+							</div>
+							<div class="cell">
+								{{list.gender}}
+							</div>
+							<div class="cell">
+								{{list.email}}
+							</div>
+							<div class="cell">
+								{{list.fingerID}}
+							</div>
+						</div>
+
+						</div>
+
+						
+						
+
+						
+							
+							
+						
+							
+						
+
+					</div>
+			</div>
+		</div>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+	const url = "http://localhost:3000/User/";
+	new Vue({
+		el:"#app",
+		data:{
+			userList:[]
+		},
+		mounted(){
+			axios.get(url).then(response =>{
+				this.userList = response.data;
+			},err =>{
+				alert("not response");
+			}
+
+			);
+		}
+	});
+</script>
+</body>
+</html>

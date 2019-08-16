@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="refresh" content="5">
+	<title>Biometric Attendance</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-5/css/fontawesome-all.min.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--===============================================================================================-->
+</head>
+<style>
+	.form-detail .form-row {
+	position: relative;
+}
+.form-detail .form-row-last {
+	text-align: center;
+}
+.form-detail .form-row-last {
+	text-align: center;
+}
+	.form-detail label {
+	display: block;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+.form-detail .input-text {
+	margin-bottom: 26px;
+}
+.form-detail input {
+	width: 94.5%;
+    padding: 10.5px 15px;
+    border: 1px solid #e5e5e5;
+    appearance: unset;
+    -moz-appearance: unset;
+    -webkit-appearance: unset;
+    -o-appearance: unset;
+    -ms-appearance: unset;
+    outline: none;
+    -moz-outline: none;
+    -webkit-outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    border-radius: 4px;
+	-o-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+}
+.form-detail input:focus {
+	border: 1px solid #b3b3b3;
+}
+.form-detail .register {
+	font-size: 18px;
+	color: #fff;
+	background: #3786bd;
+	border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 180px;
+	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-o-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-ms-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+	margin: 19px 0 40px;
+	cursor: pointer;
+}
+.form-detail .register:hover {
+	background: #2f73a3;
+}
+.form-detail .form-row-last input {
+	padding: 14px;
+}
+.form-detail i {
+	font-size: 14px;
+	color: #999;
+	right: 15px;
+	top: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+}
+nav {text-decoration:none;
+  font-family: san-serif;
+display:block;
+background-color:#6c7ae0;
+border-box:solid 15px 0 0 15px;
+font-size:1.1em;
+padding:13px;
+}
+nav a{text-decoration:none;
+padding:14px;}
+nav a:link{color:black;}
+nav a:visited{color:white;}
+nav a:hover{color:black;
+background-color:#ececff;}
+body{background-color:#c4d3f6;}
+.header{font-size:2em;
+font-family:san-serif;
+text-align:center;}
+h2{font-family:san-serif;
+font-size:1.5em;
+Text-align:center;}
+</style>
+<body>
+<header>
+<div class="header">
+	<div class="logo">
+		<a><br>Biometric Attendance</a>
+	</div>
+</header><br>
+<nav>
+	<a href="index.html" class="set">Users</a>
+    <a href="userlog.html" class="set">Users Log</a>
+    <a href="manageuser.html"class="set">Manage Users</a>
+
+</nav><br>
+</div>
+	<div><p><h2><br>Here Are The Results Of Daily Logs</h2></p></div>
+	
+	<div class="limiter" id="app">
+		<center><form class="form-detail"><table><tr><td><div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Export to excel" v-on:click="excel()"></div></td></tr></table></form></center>
+		<div class="container-table100">
+			<div class="wrap-table100">
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+							Name
+							</div>
+							<div class="cell">
+								Fingerprint ID
+							</div>
+							<div class="cell">
+								TIME_IN
+								</div> 
+								<div class="cell">
+								TIME_OUT
+								</div>
+						</div>
+
+						<div class="row" v-for="list in userList">
+							
+							<div class="cell" >
+							{{list.name}}
+							</div>
+							<div class="cell" >
+								{{list.fingerID}}
+							</div>
+							<div class="cell">
+								{{list.time_in}}
+							</div>
+							<div class="cell">
+								{{list.time_out}}
+							</div>
+						</div>
+
+						</div>
+				</div>
+			</div>
+		</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+	const url = "http://localhost:3000/userLog/";
+	new Vue({
+		el:"#app",
+		data:{
+			userList:[]
+		},
+		methods:{
+			excel:function(){
+				alert("ok");
+				axios.get(url+"excel/true").then(response =>
+				{
+					alert("Exported");
+				}, err =>{
+					alert("no response");
+				});
+			}
+		},
+		mounted(){
+			axios.get(url).then(response =>{
+				this.userList = response.data;
+			},err =>{
+				alert("not response");
+			}
+
+			);
+		}
+
+	});
+</script>
+
+</body>
+</html>
