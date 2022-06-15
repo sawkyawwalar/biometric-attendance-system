@@ -1,2 +1,2 @@
 This template was made by Colorlib (https://colorlib.com)
-Please visit our website for more awesome templates, themes and tools. 
+University project for student attendance system with fingerprint sensor
